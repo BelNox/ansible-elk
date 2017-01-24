@@ -5,8 +5,8 @@
 #
 
 - name: Add Java repository
-  apt_repository: repo='ppa:webupd8team/java'
-  state: present
+  apt_repository:
+    repo: ppa:webupd8team/java
 
 - name: Update packages list
   command: apt-get update
