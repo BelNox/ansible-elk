@@ -22,7 +22,7 @@
 
 - name: Updating the config file to restrict outside access
   lineinfile:
-    path: /etc/elasticsearch/elasticsearch.yml
+    destfile: /etc/elasticsearch/elasticsearch.yml
     regexp: '^network.host:'
     line: 'network.host: localhost'
 
