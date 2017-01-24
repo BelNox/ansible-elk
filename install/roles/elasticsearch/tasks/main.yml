@@ -6,7 +6,6 @@
 
 - name: Add Elasticsearch apt-key
   apt_key:
-    id: 473041FA
     url: "https://packages.elastic.co/GPG-KEY-elasticsearch"
     state: present
 
