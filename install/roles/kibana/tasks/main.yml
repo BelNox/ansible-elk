@@ -21,11 +21,15 @@
     regexp: 'server.host:'
     line: 'server.host: localhost'
 
-- name: Reloading daeomon and enabling Kibana service
+- name: Reloading daemon
+  systemd:
+    name: kibana
+    daemon_reload: yes
+
+- name: Restarting elasticsearch
   systemd:
     name: kibana
     enabled: yes
-    daemon_reload: yes
 
 
 - name: Restarting elasticsearch
