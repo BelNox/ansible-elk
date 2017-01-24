@@ -4,7 +4,9 @@
 #
 
 - hosts: elk
-  remote_user: root
+  remote_user: bel
+  become: yes
+  become_user: root
   roles:
     - { role: java }
     - { role: elasticsearch }
