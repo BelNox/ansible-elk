@@ -10,3 +10,4 @@
   roles:
     - { role: java }
     - { role: elasticsearch }
+    - { role: kibana }
