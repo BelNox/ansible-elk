@@ -7,6 +7,9 @@
 - name: Add Java repository
   apt_repository: repo='ppa:webupd8team/java' state=present
 
+- name: Update packages list
+    command: apt-get update
+
 - name: Install the Java 8 package
   apt:
     name: oracle-java8-installer
