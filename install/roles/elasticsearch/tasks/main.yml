@@ -1,0 +1,22 @@
+
+---
+#
+# Installing Elasticsearch
+#
+
+- name: Add Elasticsearch apt-key
+  apt_key:
+    id: 473041FA
+    url: "https://packages.elastic.co/GPG-KEY-elasticsearch"
+    state: present
+
+- name: Adding Elasticsearch APT repository
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/5.x/apt stable main
+    state: present
+
+
+- name: Update repositories cache and install Elasticsearch
+  apt:
+    name: elasticsearch
+    update_cache: yes

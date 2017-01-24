@@ -1,0 +1,13 @@
+
+---
+#
+# Installing Java 8
+#
+
+- name: Add Java repository
+  apt_repository: repo='ppa:webupd8team/java' state=present
+
+- name: Install the Java 8 package
+  apt:
+    name: oracle-java8-installer
+    state: present
