@@ -20,19 +20,3 @@
     destfile: /opt/kibana/config/kibana.yml
     regexp: 'server.host:'
     line: 'server.host: localhost'
-
-- name: Reloading daemon
-  systemd:
-    name: kibana
-    daemon_reload: yes
-
-- name: Restarting elasticsearch
-  systemd:
-    name: kibana
-    enabled: yes
-
-
-- name: Restarting elasticsearch
-  systemd:
-    name: kibana
-    state: started
