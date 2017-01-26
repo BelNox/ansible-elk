@@ -11,3 +11,4 @@
     - { role: java }
     - { role: elasticsearch }
     - { role: kibana }
+    - { role: nginx }
