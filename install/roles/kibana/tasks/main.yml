@@ -20,3 +20,14 @@
     destfile: /etc/kibana/kibana.yml
     regexp: 'server.host:'
     line: 'server.host: localhost'
+
+- name: Enabling Kibana
+  systemd:
+    name: kibana
+    enabled: yes
+    daemon_reload: yes
+
+- name: Starting Kibana
+  systemd:
+    name: kibana
+    started: yes
