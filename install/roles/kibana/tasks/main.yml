@@ -30,4 +30,4 @@
 - name: Starting Kibana
   systemd:
     name: kibana
-    started: yes
+    state: started
