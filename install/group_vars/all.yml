@@ -1,10 +1,6 @@
 ---
 
 # EPEL Repository for extra packages
-kibana_user: admin
-
-kibana_password: password
-
 server_name: inl-gystt
 
 ########################################
