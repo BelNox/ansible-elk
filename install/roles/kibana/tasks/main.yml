@@ -17,6 +17,6 @@
 
 - name: Updating the config file to restrict outside access
   lineinfile:
-    destfile: /opt/kibana/config/kibana.yml
+    destfile: /etc/kibana/kibana.yml
     regexp: 'server.host:'
     line: 'server.host: localhost'
