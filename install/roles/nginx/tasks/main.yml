@@ -26,13 +26,13 @@
   register: nginx_needs_restart
 
 # deploy basic nginx.conf 8080 vhost
-- name: Setup nginx TCP/8080 vhost for SSL certificate
-  template:
-    src=nginx.conf.j2
-    dest=/etc/nginx/nginx.conf
-    owner=root
-    group=root
-    mode=0644
+#- name: Setup nginx TCP/8080 vhost for SSL certificate
+#  template:
+#    src=nginx.conf.j2
+#    dest=/etc/nginx/nginx.conf
+#    owner=root
+#    group=root
+#    mode=0644
 
 # start nginx service
 - name: Enabling Nginx
