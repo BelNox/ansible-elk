@@ -18,10 +18,15 @@
 
 # Creating directories for SSL
 - name: Creates SSL directories
-  file: path=/etc/pki/tls/certs state=directory
+  shell: "mkdir -p /etc/pki/tls/certs"
 
+# Creating directories for SSL
 - name: Creates SSL directories
-  file: path=/etc/pki/tls/private state=directory
+  shell: "mkdir /etc/pki/tls/private"
+
+# Creating directories for SSL
+- name: Creates SSL directories
+  shell: "mkdir /etc/pki/tls/private"
 
 - name: Updating the config file to restrict outside access
   lineinfile:
