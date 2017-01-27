@@ -60,9 +60,19 @@
     update_cache: yes
 
 
+# Create Kibana User
+- name: Create kibana admin user
+  template:
+    src=kibanaAdmin.j2
+    dest=/tmp/createUser
+    owner=root
+    group=root
+    mode=0744
+
+
 - name: Create kibana admin user
   expect:
-      command: echo "{{kibana_user}}:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
+      command: bash /tmp/createUser
       responses:
         'Password:' : "{{kibana_password}}"
 
