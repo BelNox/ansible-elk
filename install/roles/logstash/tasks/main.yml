@@ -16,17 +16,18 @@
     name: logstash
     update_cache: yes
 
-# Creating directories for SSL
+# Creating certs directories for SSL
 - name: Creates SSL directories
-  shell: "mkdir -p /etc/pki/tls/certs"
+  file:
+    path: /etc/pki/tls/certs
+    state: directory
 
-# Creating directories for SSL
+# Creating private directories for SSL
 - name: Creates SSL directories
-  shell: "mkdir /etc/pki/tls/private"
+  file:
+    path: /etc/pki/tls/private
+    state: directory
 
-# Creating directories for SSL
-- name: Creates SSL directories
-  shell: "mkdir /etc/pki/tls/private"
 
 - name: Updating the config file to restrict outside access
   lineinfile:
