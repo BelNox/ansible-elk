@@ -19,7 +19,7 @@
 - name: Setup Nginx reverse proxy for kibana
   template:
     src=kibana.conf.j2
-    dest=/etc/nginx/sites\-available/default
+    dest=/etc/nginx/sites-available/default
     owner=root
     group=root
     mode=0644
