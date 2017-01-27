@@ -4,7 +4,7 @@
 # Installing Nginx
 #
 
-- name: Update repositories cache and install Kibana
+- name: Update repositories cache and install Nginx
   apt:
     name: nginx
     update_cache: yes
