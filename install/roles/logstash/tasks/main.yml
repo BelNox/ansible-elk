@@ -19,8 +19,9 @@
 # Creating directories for SSL
 - name: Creates SSL directories
   file: path=/etc/pki/tls/certs state=directory
-  file: path=/etc/pki/tls/private state=directory
 
+- name: Creates SSL directories
+  file: path=/etc/pki/tls/private state=directory
 
 - name: Updating the config file to restrict outside access
   lineinfile:
@@ -74,4 +75,3 @@
   systemd:
     name: logstash
     enabled: yes
-    
