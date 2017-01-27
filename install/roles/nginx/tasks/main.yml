@@ -64,7 +64,7 @@
   expect:
       command: echo '{{kibana_user}}:`openssl passwd -apr1`' | sudo tee -a /etc/nginx/htpasswd.users
       responses:
-        (?i)password: "{{kibana_password}}"
+        'Password:' : ' "{{kibana_password}}"
 
 
 # start nginx service
