@@ -28,6 +28,8 @@ kibana_password: admin
 
 nginx_user: www-data
 
+elk_ip: 10.11.13.158
+
 ### logging backend ###
 # you can pick between logstash or fluentd
 # if left empty logstash will be used

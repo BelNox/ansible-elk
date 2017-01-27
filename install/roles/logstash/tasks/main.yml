@@ -11,7 +11,7 @@
     state: present
 
 # Installing logstash
-- name: Update repositories cache and install Elasticsearch
+- name: Update repositories cache and install Logstash
   apt:
     name: logstash
     update_cache: yes
@@ -27,7 +27,7 @@
   lineinfile:
     destfile: /etc/ssl/openssl.cnf
     regexp: 'subjectAltName ='
-    line: 'subjectAltName = IP: {{ ansible_eth0.ipv4.address }}'
+    line: 'subjectAltName = IP: {{ elk_ip }}'
 
 - name: Generate SSL certificates
   shell: cd /etc/pki/tls
