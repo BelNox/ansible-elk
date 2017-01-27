@@ -33,7 +33,7 @@
   shell: cd /etc/pki/tls
 
 - name: Generate SSL certificates
-  shell: openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
+  shell: "openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt"
 
 
 - name: Configure Beats configuration file
