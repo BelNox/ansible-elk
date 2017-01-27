@@ -1,0 +1,33 @@
+
+---
+#
+# Installing Kibana
+#
+
+- name: Adding Kibana APT repository
+  apt_repository:
+    repo: deb http://packages.elastic.co/kibana/4.5/debian stable main
+    state: present
+
+
+- name: Update repositories cache and install Kibana
+  apt:
+    name: kibana
+    update_cache: yes
+
+- name: Updating the config file to restrict outside access
+  lineinfile:
+    destfile: /etc/kibana/kibana.yml
+    regexp: 'server.host:'
+    line: 'server.host: localhost'
+
+- name: Enabling Kibana
+  systemd:
+    name: kibana
+    enabled: yes
+    daemon_reload: yes
+
+- name: Starting Kibana
+  systemd:
+    name: kibana
+    state: started
