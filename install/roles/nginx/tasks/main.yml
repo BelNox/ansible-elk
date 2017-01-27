@@ -16,10 +16,10 @@
     mode=0755
 
 # deploy kibana.conf with FQDN
-- name: Setup nginx reverse proxy for kibana
+- name: Setup Nginx reverse proxy for kibana
   template:
     src=kibana.conf.j2
-    dest=/etc/nginx/sites-available/default
+    dest=/etc/nginx/sites\-available/default
     owner=root
     group=root
     mode=0644
@@ -34,24 +34,34 @@
 #    group=root
 #    mode=0644
 
-# start nginx service
+# Enable nginx service
 - name: Enabling Nginx
+  systemd:
+    name: nginx
+    enabled: yes
+
+# start nginx service
+- name: Starting Nginx
   systemd:
     name: nginx
     state: started
     daemon_reload: yes
 
 
-- name: Check if nginx is in use
-  shell: systemctl is-enabled nginx.service | egrep -qv 'masked|disabled'
-  register: nginx_in_use
-  ignore_errors: yes
-  tags:
-    # Skip ANSIBLE0012 Commands should not change things if nothing needs doing
-    # Determine if nginx is enabled
-    - skip_ansible_lint
+- name: Check kibana users
+  stat: path=/etc/nginx/htpasswd.users
+  ignore_errors: true
+  register: kibana_user_pwfile_exists
 
-- name: Enabling Nginx
+
+- name: Create kibana admin user
+  command: htpasswd -b -c /etc/nginx/htpasswd.users {{kibana_user}} {{kibana_password}}
+  ignore_errors: true
+  when: kibana_user_pwfile_exists != 0
+
+# start nginx service
+- name: Starting Nginx
   systemd:
     name: nginx
-    enabled: yes
+    state: reloaded
+    daemon_reload: yes
