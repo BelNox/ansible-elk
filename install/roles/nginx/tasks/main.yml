@@ -55,7 +55,10 @@
 
 
 - name: Create kibana admin user
-  shell: "htpasswd -b -c /etc/nginx/htpasswd.users {{kibana_user}} {{kibana_password}}"
+  expect:
+      command: echo '{{kibana_user}}:`openssl passwd -apr1`' | sudo tee -a /etc/nginx/htpasswd.users
+      responses:
+        (?i)password: "{{kibana_password}}"
 
 
 # start nginx service
