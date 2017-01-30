@@ -22,14 +22,14 @@
     regexp: 'server.host:'
     line: 'server.host: localhost'
 
-# Enable Kibana service
+# Enable Kibana
 - name: Enabling Kibana service
   systemd:
     name: kibana
     enabled: yes
     daemon_reload: yes
 
-# Start Kibana service
+# Start Kibana
 - name: Starting Kibana service
   systemd:
     name: kibana
